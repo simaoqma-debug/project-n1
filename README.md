@@ -12,6 +12,17 @@ The frontend deliberately contains only the **Pocket Assistant** heading and a p
 
 > The spoken voice is AI-generated. Microphone recordings and conversation text are sent to OpenAI.
 
+## Run with Nix
+
+The flake builds the Astro/SolidJS frontend, prepares the Flask/OpenAI Python environment, and starts the complete application with one command:
+
+```bash
+export OPENAI_API_KEY="your-openai-api-key"
+nix run
+```
+
+Open `http://127.0.0.1:5000`. The first run may take longer while Nix downloads and builds the pinned dependencies. A development shell is also available with `nix develop`.
+
 ## Development setup
 
 The web version records in the browser, so it does **not** need PyAudio or PortAudio.

@@ -19,7 +19,7 @@ from urllib.parse import quote, urlsplit
 from flask import Flask, Response, jsonify, request, send_from_directory
 from openai import APIError, OpenAI
 
-from assistant import SYSTEM_INSTRUCTIONS
+from prompts import SYSTEM_INSTRUCTIONS
 
 MAX_AUDIO_BYTES = 25 * 1024 * 1024
 CONVERSATION_ID_PATTERN = re.compile(r"^[A-Za-z0-9._:-]{1,128}$")
@@ -273,6 +273,9 @@ def _valid_conversation_id(value: str) -> bool:
 
 
 def _default_frontend_dist(root: Path) -> Path:
+    configured_dist = os.getenv("POCKET_ASSISTANT_FRONTEND_DIST")
+    if configured_dist:
+        return Path(configured_dist)
     source_dist = root / "frontend" / "dist"
     if source_dist.is_dir():
         return source_dist
