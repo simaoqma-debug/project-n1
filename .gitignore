@@ -1,0 +1,13 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+*.wav
+.pi-subagents/
+\#*#
+.#*
+
+*.egg-info/
+frontend/node_modules/
+frontend/dist/
+frontend/.astro/

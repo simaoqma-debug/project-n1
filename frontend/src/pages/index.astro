@@ -1,0 +1,160 @@
+---
+import PushToTalk from "../components/PushToTalk";
+---
+
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Interface de voz do Pocket Assistant" />
+    <title>Pocket Assistant</title>
+  </head>
+  <body>
+    <main>
+      <PushToTalk client:load />
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #111;
+    background: #fff;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    background: #fff;
+  }
+
+  main {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+
+  .assistant-layout {
+    width: min(72rem, 100%);
+    min-height: 28rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 18rem minmax(0, 1fr);
+  }
+
+  .assistant-controls {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    font-weight: 600;
+  }
+
+  .conversation {
+    grid-column: 3;
+    min-height: 100%;
+    max-height: 70vh;
+    overflow-y: auto;
+    padding: 1rem 2rem;
+    border-left: 2px solid #111;
+    text-align: left;
+  }
+
+  .conversation-message {
+    margin: 0;
+    padding: 1rem 0;
+    line-height: 1.5;
+  }
+
+  .conversation-message + .conversation-message {
+    border-top: 1px dotted #111;
+  }
+
+  .talk-button {
+    width: 9rem;
+    height: 9rem;
+    padding: 1rem;
+    border: 2px solid #111;
+    border-radius: 50%;
+    color: #111;
+    background: #fff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    touch-action: none;
+    user-select: none;
+  }
+
+  .talk-button:hover:not(:disabled),
+  .talk-button:focus-visible {
+    background: #f3f3f3;
+  }
+
+  .talk-button:focus-visible {
+    outline: 3px solid #777;
+    outline-offset: 4px;
+  }
+
+  .talk-button[data-state="recording"] {
+    color: #fff;
+    background: #111;
+  }
+
+  .talk-button:disabled {
+    color: #666;
+    border-color: #999;
+    cursor: wait;
+  }
+
+  @media (max-width: 700px) {
+    main {
+      padding: 1rem;
+    }
+
+    .assistant-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .assistant-controls {
+      grid-column: 1;
+      min-height: 24rem;
+      padding: 1rem;
+    }
+
+    .conversation {
+      grid-column: 1;
+      min-height: 12rem;
+      padding: 1rem;
+      border-top: 2px solid #111;
+      border-left: 0;
+    }
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
