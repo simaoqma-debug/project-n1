@@ -1,0 +1,25 @@
+{
+  "name": "pocket-assistant-frontend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "solid-js": "^1.9.14"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "@astrojs/solid-js": "^7.0.1",
+    "@solidjs/testing-library": "^0.8.10",
+    "astro": "^7.0.8",
+    "jsdom": "^29.1.1",
+    "typescript": "^5.9.3",
+    "vite-plugin-solid": "^2.11.12",
+    "vitest": "^4.1.10"
+  }
+}

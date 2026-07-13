@@ -1,0 +1,29 @@
+[project]
+name = "project-n1"
+version = "0.1.0"
+description = "Raspberry Pi voice assistant using OpenAI GPT for STT, responses, and TTS"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "flask>=3.1.0",
+    "openai>=2.0.0",
+    "speechrecognition>=3.17.0",
+]
+
+[project.optional-dependencies]
+audio = ["pyaudio>=0.2.14"]
+
+[project.scripts]
+pi-assistant = "assistant:main"
+pocket-assistant-api = "server:main"
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["assistant", "server"]
+
+[tool.setuptools.data-files]
+"share/pocket-assistant/frontend" = ["frontend/dist/index.html"]
+"share/pocket-assistant/frontend/_astro" = ["frontend/dist/_astro/*"]
